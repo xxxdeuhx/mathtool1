@@ -1,5 +1,6 @@
 import sys
 import math
+t = 200
 
 
 def main():
@@ -7,7 +8,7 @@ def main():
     
     if args == 0 or sys.argv[1] == "--help":
         print(
-"mathtool — решение уравнений вида A*x^2 + B*x + C = 0 \nИспользование:\npython mathtool.py -> вывод справки\npython mathtool.py --help -> вывод справки\npython mathtool.py solve -> ввод коэффициентов с клавиатуры\npython mathtool.py solve -a 1 -b -3 -c 2 -> решение с заданными коэффициентами\nКоэффициенты A, B, C — целые числа, по модулю не превышающие 10000."
+f"mathtool — решение уравнений вида A*x^2 + B*x + C = 0 \nИспользование:\npython mathtool.py -> вывод справки\npython mathtool.py --help -> вывод справки\npython mathtool.py solve -> ввод коэффициентов с клавиатуры\npython mathtool.py solve -a 1 -b -3 -c 2 -> решение с заданными коэффициентами\nКоэффициенты A, B, C — целые числа, по модулю не превышающие {t}."
 )
         sys.exit(0)
     elif sys.argv[1] != "solve":
@@ -36,14 +37,14 @@ def main():
            print("ОШИБКА: коэффициент не является целым числом")
            sys.exit(1)
 
-    if abs(a) > 10000 or abs(b) > 10000 or abs(c) > 10000:
+    if abs(a) > t or abs(b) > t or abs(c) > t:
             print("ОШИБКА: значение вне допустимого диапазона")
             sys.exit(1)
 
     if a == 0:
        if b != 0:
               print ("Линейное уравнение")
-              x = -c / b
+              x = (-c / b)
               print (f"x = {x:.3f}")
        else:
               print("ОШИБКА: это не уравнение, неизвестное отсутствует")
@@ -65,4 +66,4 @@ def main():
                print("Действительных корней нет")           
     
     sys.exit(0)
-    
+main()
